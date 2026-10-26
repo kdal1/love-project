@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我们的专属小站</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft Yahei",sans-serif;
+        }
+        body{
+            background-color: #e8f2ff;
+            padding:30px 20px;
+            max-width:700px;
+            margin:0 auto;
+        }
+        .header-title{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .heart-top{
+            font-size: 60px;
+            color:#ff6688;
+            margin-bottom:12px;
+        }
+        .header-title h2{
+            font-size:24px;
+            color:#442228;
+            margin-bottom:10px;
+        }
+        .love-day-tip{
+            font-size:17px;
+            color:#667799;
+        }
+        /* 网格布局 两列卡片 */
+        .grid-box{
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            gap:16px;
+        }
+        .grid-item{
+            background:#ffffff;
+            border-radius:22px;
+            padding:26px 20px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            cursor:pointer;
+            transition:0.2s;
+            text-decoration: none;
+        }
+        .grid-item:hover{
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.09);
+        }
+        .grid-item .icon{
+            font-size:32px;
+            margin-bottom:10px;
+        }
+        .grid-item h4{
+            font-size:20px;
+            color:#332226;
+            margin-bottom:6px;
+        }
+        .grid-item p{
+            color:#777;
+            font-size:14px;
+        }
+    </style>
+</head>
+<body>
+<div class="header-title">
+    <div class="heart-top">❤️</div>
+    <h2>欢迎来到我们的专属小站 ❤️</h2>
+    <div class="love-day-tip">我们已经在一起 <span th:text="${loveDays}"></span> 天啦</div>
+</div>
+
+<div class="grid-box">
+    <!-- 1.专属身份卡 -->
+    <a th:href="@{/card}" class="grid-item">
+        <div class="icon">💗</div>
+        <h4>专属身份卡</h4>
+        <p>属于我们的小卡片</p >
+    </a >
+    <!-- 2.告白信 -->
+    <a th:href="@{/letter}" class="grid-item">
+        <div class="icon">📜</div>
+        <h4>告白信</h4>
+        <p>写给你的心里话</p >
+    </a >
+    <!-- 3.随机情话 -->
+    <a th:href="@{/loveword}" class="grid-item">
+        <div class="icon">✨</div>
+        <h4>随机情话</h4>
+        <p>送给你的甜言蜜语</p >
+    </a >
+    <!-- 4.心愿清单（已完成） -->
+    <a th:href="@{/wish/list}" class="grid-item">
+        <div class="icon">🎀</div>
+        <h4>心愿清单</h4>
+        <p>想一起完成的小事</p >
+    </a >
+    <!-- 5.纪念日倒计时（已完成） -->
+    <a th:href="@{/anniversary/list}" class="grid-item">
+        <div class="icon">⏳</div>
+        <h4>纪念日倒计时</h4>
+        <p>重要日子不错过</p >
+    </a >
+</div>
+
+</body>
+</html>

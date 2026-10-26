@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>告白信</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin:0;
+            padding:0;
+            font-family: "Microsoft Yahei",sans-serif;
+        }
+        body{
+            background:#e8f2ff;
+            padding:40px 20px;
+        }
+        .letter{
+            background:#fff;
+            border-radius:24px;
+            padding:40px 30px;
+            max-width:600px;
+            margin:0 auto;
+            box-shadow:0 4px 14px rgba(0,0,0,0.06);
+        }
+        .title{
+            text-align:center;
+            font-size:24px;
+            color:#ff6688;
+            margin-bottom:25px;
+        }
+        .content{
+            font-size:17px;
+            line-height:2;
+            color:#444;
+        }
+        .back{
+            display:block;
+            width:fit-content;
+            margin:35px auto 0;
+            text-decoration:none;
+            background:#ff88aa;
+            color:white;
+            padding:12px 24px;
+            border-radius:14px;
+        }
+    </style>
+</head>
+<body>
+<div class="letter">
+    <div class="title">💌 给我的宝贝</div>
+    <div class="content">
+        很高兴遇见你，往后岁岁年年，我都想陪着你。不管是平淡日常，还是风雨路途，我都想和你一起慢慢走下去。<br><br>
+        希望我们一直是彼此的偏爱与例外，年年岁岁，永不分开。
+    </div>
+    <a th:href="@{/}" class="back">返回首页</a >
+</div>
+</body>
+</html>

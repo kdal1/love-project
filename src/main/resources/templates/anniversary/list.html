@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>纪念日倒计时</title>
+  <style>
+    *{
+      box-sizing: border-box;
+      font-family: "Microsoft Yahei", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background: linear-gradient(135deg, #fff0f6, #e8f4ff);
+      padding: 40px 20px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .title{
+      text-align:center;
+      color:#dd6b99;
+      font-size:28px;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+    .add-box{
+      background:white;
+      padding:24px;
+      border-radius:20px;
+      box-shadow: 0 4px 15px rgba(221, 107, 153, 0.12);
+      margin-bottom:24px;
+    }
+    .add-box form{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    input{
+      padding:12px 16px;
+      border:1px solid #f5c8dd;
+      border-radius:12px;
+      font-size:16px;
+      outline: none;
+      transition: 0.2s;
+    }
+    input:focus{
+      border-color:#dd6b99;
+    }
+    button{
+      padding:12px 20px;
+      border:none;
+      border-radius:12px;
+      color:white;
+      font-size:15px;
+      cursor:pointer;
+      transition: 0.2s;
+    }
+    button:hover{
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+    .add-btn{
+      background:#dd6b99;
+    }
+    .ann-item{
+      background:white;
+      border-radius:18px;
+      padding:20px;
+      margin:14px 0;
+      box-shadow:0 3px 12px rgba(221, 107, 153, 0.08);
+      transition: 0.2s;
+    }
+    .ann-item:hover{
+      transform: translateY(-2px);
+    }
+    .ann-name{
+      font-size: 19px;
+      color:#333;
+      font-weight: bold;
+    }
+    .day-text{
+      font-size:22px;
+      color:#dd6b99;
+      margin:8px 0;
+    }
+    .del-btn{
+      background:#f27888;
+      margin-top:10px;
+    }
+    .back-btn{
+      background:#98a8d8;
+      margin-top:30px;
+      display:block;
+      width: 140px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+  </style>
+</head>
+<body>
+<h2 class="title">💌 纪念日倒计时</h2>
+
+<!-- 添加纪念日表单 -->
+<div class="add-box">
+  <form th:action="@{/anniversary/add}" method="post">
+    <input type="text" name="name" placeholder="纪念日名字，比如：在一起的日子" required>
+    <input type="date" name="targetDate" required>
+    <button type="submit" class="add-btn">添加纪念日</button>
+  </form>
+</div>
+
+<!-- 纪念日列表 -->
+<div th:each="ann : ${annVoList}" class="ann-item">
+  <div class="ann-name" th:text="${ann.name}"></div>
+  <div class="day-text" th:text="${ann.tip}"></div>
+  <div>日期：<span th:text="${ann.targetDate}"></span></div>
+  <form th:action="@{/anniversary/delete}" method="post">
+    <input type="hidden" name="id" th:value="${ann.id}">
+    <button type="submit" class="del-btn">删除</button>
+  </form>
+</div>
+
+<a th:href="@{/}">
+  <button class="back-btn">返回首页</button>
+</a >
+</body>
+</html>
